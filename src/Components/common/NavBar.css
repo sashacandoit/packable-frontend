@@ -1,0 +1,28 @@
+.nav-links-sm li a {
+  color: #223E87;
+  font-size: 16px;
+}
+
+.nav-links-sm li a:hover {
+  color: #667DBA;
+}
+
+.navbar-brand-link {
+  font-family: 'Fredoka One', sans-serif;
+  color: #223E87;
+  max-height: fit-content;
+  font-size: 22px;
+}
+
+.navbar-brand-link:hover {
+  color: #EF9060;
+}
+
+.nav-links-lg {
+  color: #223E87;
+}
+
+.transparent-nav {
+  margin-bottom: -66px;
+  padding: 1em;
+}

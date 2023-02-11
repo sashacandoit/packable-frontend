@@ -1462,7 +1462,7 @@ form label {
   -o-transition: 0.2s ease-in-out;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
-  box-shadow: 4px 4px 8px #79C8D1, -4px -4px 8px #C3F0FA;
+  box-shadow: 4px 4px 8px #79c8d1b1, -4px -4px 8px #C3F0FAb1;
 }
 
 .btn:hover,
@@ -1818,7 +1818,7 @@ body .btn-xs.btn-icon:hover {
 .btn-primary:focus,
 .btn-primary.active {
   color: #223E87 !important;
-  background-color: #9ADDED !important;
+  background-color: #9adced6c !important;
   border-color: #9ADDED !important;
 }
 
@@ -1826,7 +1826,7 @@ body .btn-xs.btn-icon:hover {
 .btn-primary:active,
 .show>.btn-primary.dropdown-toggle {
   color: #223E87 !important;
-  background-color: #C3F0FA !important;
+  background-color: #c3f0faa4 !important;
   border-color: #C3F0FA !important;
 }
 

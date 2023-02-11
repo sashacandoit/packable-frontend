@@ -1,30 +1,39 @@
 import React from "react"
 import "./Home.css"
 import "../styles/style.css"
+import { Container, Col, Row } from "reactstrap";
+import { Typography } from "@mui/material";
 
 const Home = () => {
   return (
     <div className="Home">
-      <header className="lg">
-        <div className="container Home-container">
-          <div className="row ">
-            <div className="col-lg tablet-lg-top-30">
+      <Container>
+        <Row>
+          <Col className="">
+          </Col>
+          <Col xs="5" className="Home-content">
+            <Row>
               <h1 className="page-title mb-15 Home-title">
                 packable
               </h1>
-              <h6 className="secondary-font fs-14 fw-bold mb-40">
-                Login to your account to get started!
-              </h6>
-              <p className="fs-16 mb-40 tablet-lg-top">
-                Don't have an account yet? Register for a user account to build your first packing list!
-              </p>
-              <a href="/register" className="btn btn-primary pill m-10 ml-0">
-                <i className="fas fa-user mr-5">
-                </i>Sign Up</a>
-            </div>
-          </div>
-        </div>
-      </header>
+              <Typography variant="body1" gutterBottom>
+                Packable helps you pack smarter by generating a personalized packing list based on your destination and length of your trip. You can customize the list by adding or removing items, and save your lists to reference later!
+              </Typography>
+            </Row>
+            
+            <Row className="Home-btn-container">
+              <a href="/login" className="Home-btn btn btn-primary pill m-10 ml-0">
+                Login
+              </a>
+              <a href="/register" className="Home-btn btn btn-primary pill m-10 ml-0">
+                Sign Up
+              </a>
+            </Row>
+          </Col>
+          <Col className="">
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

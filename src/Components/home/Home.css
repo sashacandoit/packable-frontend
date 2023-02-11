@@ -3,11 +3,32 @@
   background-image: url("../blueBackgroundImg.jpeg");
   background-size: cover;
   height: 100vh;
-  color: #abebf4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
 .Home-title {
   font-family: 'Fredoka One', sans-serif;
   color: #EF9269;
+  font-size: 5rem;
+}
+
+.Home-content {
+  min-height: 35vh;
+  display: grid;
+  place-items: center;
+  margin-bottom: 110px;
+}
+
+.Home-btn {
+  width: 35%;
+}
+
+.Home-btn-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  width: 100%;
 }

@@ -1,31 +1,32 @@
+import React, { useState, useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
+import NavRoutes from "./Routes/NavRoutes"
+// import NavBar from "./common/NavBar";
+import jwt from "jsonwebtoken";
+import PackableApi from "./PackableApi";
+
 import './App.css';
 
+export const TOKEN_ID = "packable-token"
+
+
 function App() {
+
   return (
     <div className="App">
-      <header class="lg">
-        <div class="container">
-          <div class="row ">
-            <div class="col-lg-6 tablet-lg-top-30">
-              <h2 class="page-title mb-15">
-                <span class="text-primary">Style Guide</span>
-                Maker
-              </h2>
-              <h6 class="secondary-font fs-14 fw-bold mb-40">
-                Login to your account to get started!
-              </h6>
-              <p class="fs-16 mb-40 tablet-lg-top">
-                Don't have an account yet? Register for a user account to generate and save your style guides!
-              </p>
-              <a href="/register" class="btn btn-primary pill m-10 ml-0">
-                <i class="fas fa-user mr-5">
-                </i>Sign Up</a>
-            </div>
-          </div>
-        </div>
+      <header className="App-header">
+        <BrowserRouter>
+          {/* <UserContext.Provider value={{ currentUser, setCurrentUser }}> */}
+            {/* <NavBar logout={logout} /> */}
+            <main>
+            {/* <NavRoutes login={login} signup={signup} logout={logout} /> */}
+            <NavRoutes />
+            </main>
+          {/* </UserContext.Provider> */}
+        </BrowserRouter>
       </header>
     </div>
-  );
+  )
 }
 
 export default App;

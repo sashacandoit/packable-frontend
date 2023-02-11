@@ -1,15 +1,13 @@
-
-/* .App {
+.Home {
   text-align: center;
-  background-image: url("./images/blueBackgroundImg.jpeg");
+  background-image: url("../blueBackgroundImg.jpeg");
   background-size: cover;
   height: 100vh;
   color: #abebf4;
 }
 
 
-.App-title {
+.Home-title {
   font-family: 'Fredoka One', sans-serif;
   color: #EF9269;
 }
- */

@@ -17,7 +17,7 @@ function NavRoutes({ login, signup, logout }) {
         {/* Public Routes */}
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/login" element={<Login username="username" login={login} />}></Route>
-        <Route exact path="/signup" element={<Signup signup={signup} />}></Route>
+        <Route exact path="/register" element={<Signup signup={signup} />}></Route>
 
 
         {/* Protected Routes */}

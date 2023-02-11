@@ -1,4 +1,4 @@
-.Home {
+.Login {
   text-align: center;
   background-image: url("../blueBackgroundImg.jpeg");
   background-size: cover;
@@ -9,24 +9,24 @@
 }
 
 
-.Home-title {
+.Login-title {
   font-family: 'Fredoka One', sans-serif;
-  color: #EF9269;
-  font-size: 7rem;
+  color: #667DBA;
+  font-size: 5rem;
 }
 
-.Home-content {
+.Login-content {
   min-height: 35vh;
   display: grid;
   place-items: center;
   margin-bottom: 110px;
 }
 
-.Home-btn {
+.Login-btn {
   width: 35%;
 }
 
-.Home-btn-container {
+.Login-btn-container {
   display: flex;
   justify-content: space-around;
   align-items: stretch;

@@ -3125,7 +3125,8 @@ body .btn-xs.btn-icon:hover {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  box-shadow: 2px 2px 4px #e2e6fc, -2px -2px 4px #fff !important;
+  /* box-shadow: 2px 2px 4px #e2e6fc, -2px -2px 4px #fff !important; */
+  box-shadow: 4px 4px 8px #C3F0FAb1, -4px -4px 8px #79c8d1b1;
 }
 
 .fc-inverse {
@@ -3560,35 +3561,35 @@ textarea.form-control {
 
 /*--- input placeholder color ---*/
 ::-webkit-input-placeholder {
-  color: #c9d0f4 !important;
+  color: #989daa !important;
 }
 
 ::-moz-placeholder {
-  color: #c9d0f4 !important;
+  color: #989daa !important;
 }
 
 :-moz-placeholder {
-  color: #c9d0f4 !important;
+  color: #989daa !important;
 }
 
 :-ms-input-placeholder {
-  color: #c9d0f4 !important;
+  color: #989daa !important;
 }
 
 .fc-inverse::-webkit-input-placeholder {
-  color: #c9d0f4 !important;
+  color: #989daa !important;
 }
 
 .fc-inverse::-moz-placeholder {
-  color: #c9d0f4 !important;
+  color: #989daa !important;
 }
 
 .fc-inverse:-moz-placeholder {
-  color: #c9d0f4 !important;
+  color: #989daa !important;
 }
 
 .fc-inverse:-ms-input-placeholder {
-  color: #c9d0f4 !important;
+  color: #989daa !important;
 }
 
 .error::-webkit-input-placeholder {

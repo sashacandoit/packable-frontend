@@ -17,7 +17,7 @@ const NavBar = () => {
     return (
       <>
         <NavItem>
-          <NavLink href="/signup">Sign Up</NavLink>
+          <NavLink href="/register">Sign Up</NavLink>
         </NavItem>
         <NavItem>
           <NavLink href="/login">Login</NavLink>

@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.Signup-form {
+  margin-top: 30px;
+}
+
 
 .Signup-title {
   font-family: 'Fredoka One', sans-serif;
@@ -26,9 +30,38 @@
   width: 35%;
 }
 
-.Signup-btn-container {
+.Signup-form-section {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
   width: 100%;
+}
+
+.Signup-form-container {
+  width: 80%;
+}
+
+
+.Signup-form-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.Signup-form-input {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #f4f2f2ca;
+  border: none;
+  color: #626e8a;
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  width: 100%;
+  transition: all ease-in-out .5s;
+}
+
+.Signup-form-input::-webkit-input-placeholder {
+  font-weight: 100;
+  color: #ccc;
 }

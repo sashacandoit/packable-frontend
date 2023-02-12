@@ -1,33 +1,31 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import PackableApi from "../../PackableApi";
 import "../styles/style.css"
 import "./ForcastForm.css"
-import { Container, Col, Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 
 
 const ForcastForm = () => {
 
   const navigate = useNavigate();
 
-  const INITIAL_STATE = { username: "", password: "" };
+  const INITIAL_STATE = { searched_address: "", arrival_date: "", departure_date: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [formErrors, setFormErrors] = useState([]);
 
+
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("form submitted")
+    let result = await PackableApi.addList(formData)
+    if (result.success) {
+      navigate("/lists");
+      console.log("Success: form submitted")
+    } else {
+      setFormErrors(result.errors);
+      console.log(formErrors)
+    }
   }
-
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-  //   let result = await login(formData)
-  //   if (result.success) {
-  //     navigate("/");
-  //   } else {
-  //     setFormErrors(result.errors);
-  //     console.log(formErrors)
-  //   }
-  // }
 
   const handleChange = (e) => {
     const { name, value } = e.target;

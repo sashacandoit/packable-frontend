@@ -68,6 +68,13 @@ class PackableApi {
     return res.lists;
   }
 
+  /** Add new lists and get forcast details */
+  static async addList(data) {
+    console.log("Sending:", data)
+    let res = await this.request(`lists`, data, "post");
+    return res.token;
+  }
+
   /** Get list details by id. */
 
   static async getListDetails(list_id) {

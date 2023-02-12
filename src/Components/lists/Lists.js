@@ -1,28 +1,27 @@
-import React from "react"
+import React, { useContext } from "react"
+import UserContext from "../auth/UserContext";
 import "./Lists.css"
 import "../styles/style.css"
-import { Container, Row, Col, CardGroup } from "reactstrap";
-import { Typography } from "@mui/material"
+import { Container, Row, Col, Card, CardBody } from "reactstrap";
+import UserProfile from "../user/UserProfile";
+import ForcastForm from "../forcast/ForcastForm";
 import ListCard from "./ListCard"
 
-const Lists = () => {
+const Lists = ({ logout }) => {
+  
+  const {currentUser} = useContext(UserContext)
 
   return (
 
     <Container className="Lists">
 
-      <Row className="Lists-header">
-        <Col className="left-area left-aligned tablet-center">
-          <h2 className="page-title mb-15 Lists-username">
-            hi Sasha
-          </h2>
-        </Col>
-      
-        <Col className="right-area right-aligned tablet-center">
-          <h4 className="page-title mb-15 Lists-form-title">
-            add a new list
-          </h4>
-        </Col>
+      <Row>
+        <Card>
+          <CardBody className="Lists-profile-header">
+            <UserProfile logout={logout} />
+            <ForcastForm />
+          </CardBody>
+        </Card>
       </Row>
 
       <Row className="Lists-group" lg="4" md="3" sm="2" xs="1">

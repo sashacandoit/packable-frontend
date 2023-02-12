@@ -42,6 +42,7 @@ class PackableApi {
   /** Signup new user */
 
   static async signup(data) {
+    console.log("Sending:", data)
     let res = await this.request(`auth/register`, data, "post");
     return res.token;
   }

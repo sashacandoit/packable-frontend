@@ -1,0 +1,13 @@
+.Profile-header {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.Profile-username {
+  display: inline;
+}
+
+.Profile-logout-link {
+  display: inline;
+}

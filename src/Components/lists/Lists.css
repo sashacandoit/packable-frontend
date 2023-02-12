@@ -9,8 +9,16 @@
   margin-top: 15vh;
 }
 
+.Lists-username {
+  display: inline;
+}
+
 .Lists-header {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+
+.Lists-logout-link {
+  display: inline;
 }

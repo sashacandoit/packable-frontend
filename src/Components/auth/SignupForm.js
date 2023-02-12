@@ -1,38 +1,34 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
-
 import "../styles/style.css"
 import "./SignupForm.css"
 import { Container, Col, Row } from "reactstrap";
 import { Typography } from "@mui/material";
 
-const Signup = () => {
+const Signup = ({signup}) => {
 
   const navigate = useNavigate();
 
-  const INITIAL_STATE = { username: "", password: "" };
+  const INITIAL_STATE = { first_name: "Sasha", last_name: "Czerniawski", username: "sashacandoit", email: "sasha@email.com", password: "password" };
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [formErrors, setFormErrors] = useState([]);
 
+
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("form submitted")
+    let result = await signup(formData)
+    if (result.success) {
+      navigate("/");
+      console.log(`Success:`, formData)
+    } else {
+      setFormErrors(result.errors);
+      console.log(formErrors)
+    }
   }
-
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-  //   let result = await login(formData)
-  //   if (result.success) {
-  //     navigate("/");
-  //   } else {
-  //     setFormErrors(result.errors);
-  //     console.log(formErrors)
-  //   }
-  // }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(login => ({ ...login, [name]: value }))
+    setFormData(signup => ({ ...signup, [name]: value }))
   }
 
   return (

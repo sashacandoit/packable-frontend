@@ -23,7 +23,7 @@ function NavRoutes({ login, signup, logout }) {
         {/* Protected Routes */}
         {/* <Route exact path="/users/:username" element={<UserProfile username="username" logout={logout} />}></Route> */}
         {/* <Route exact path="/lists/:id" element={<Lists id="id" />}></Route> */}
-        <Route exact path="/lists" element={<Lists />}></Route>
+        <Route exact path="/lists" element={<Lists logout={logout} />}></Route>
 
         {/* <Route exact path='/users/:username' element={<PrivateRoute />}>
           <Route exact path="/users/:username" element={<UserProfile username="username" logout={logout} />}></Route>

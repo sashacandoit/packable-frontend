@@ -1,16 +1,16 @@
-import React, { useContext } from "react"
+import React from "react"
 import "./Lists.css"
 import "../styles/style.css"
-import { Container, Row, Col } from "reactstrap";
-// import UserProfile from "../user/UserProfile";
-// import ForcastForm from "../forcast/ForcastForm";
+import { Row, Col } from "reactstrap";
+
 import ListCard from "./ListCard"
 
 const Lists = ({ lists }) => {
+console.log(lists)
   return (
-
     <Row className="Lists-group" >
       {lists.map(list => (
+        
         <Col key={list.id}>
           <ListCard
             id={list.id}

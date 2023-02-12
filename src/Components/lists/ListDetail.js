@@ -1,35 +1,45 @@
-import React from "react"
-// import "./ListDetail.css"
+import React, { useContext, useState, useEffect } from "react"
+import { useParams } from "react-router-dom";
+import UserContext from "../auth/UserContext";
+import PackableApi from "../../PackableApi"
+import "./ListDetail.css"
 import "../styles/style.css"
-import { Container, Col, Row } from "reactstrap";
-import { Typography } from "@mui/material"
+import { Container, Row, Card, CardBody, Col } from "reactstrap";
+// import ForcastList from "../forcast/ForcastList"
 
 const ListDetail = () => {
-  return (
-    <div className="ListDetail">
-      <Container>
-        <Row>
-          <Col className="">
-          </Col>
-          <Col xs="6" className="ListDetail-content">
-            <Row>
-              <h1 className="page-title mb-15 ListDetail-title">
-                Destination Title
-              </h1>
-              <Typography variant="body1" gutterBottom>
-                Departing: Month Day, Year
-              </Typography>
-            </Row>
+  const [list, setList] = useState([])
+  const { currentUser } = useContext(UserContext)
+  const { id } = useParams();
 
-            <Row className="">
-              
-            </Row>
-          </Col>
-          <Col className="">
-          </Col>
-        </Row>
-      </Container>
-    </div>
+  useEffect(function getListDetails() {
+    async function getList() {
+      setList(await PackableApi.getListDetails(id))
+    }
+    getList();
+  }, [id]);
+
+  console.log(list)
+  return (
+    <Container className="ListDetail">
+      <Row>
+        <Card>
+          <CardBody className="ListDetail-forcast">
+            {/* <ForcastList /> */}
+            <p></p>
+          </CardBody>
+        </Card>
+      </Row>
+      
+      <Row>
+        <Col>
+          
+        </Col>
+        <Col>
+          
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

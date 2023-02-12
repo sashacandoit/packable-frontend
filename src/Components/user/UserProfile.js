@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import UserContext from "../auth/UserContext";
 import "./UserProfile.css"
 import "../styles/style.css"
-import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap";
+import { CardSubtitle } from "reactstrap";
 
 const UserProfile = ({logout}) => {
 

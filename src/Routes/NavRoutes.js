@@ -4,12 +4,11 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "../Components/home/Home";
 import Lists from "../Components/lists/Lists";
-// import ForcastForm from "../Components/forcast/ForcastForm";
-import UserProfile from "../Components/user/UserProfile";
+import UserLanding from "../Components/user/UserLanding";
 import Login from "../Components/auth/LoginForm";
 import Signup from "../Components/auth/SignupForm";
 
-function NavRoutes({ login, signup, logout }) {
+function NavRoutes({ login, signup, logout, addList }) {
 
   return (
     <div>
@@ -21,9 +20,10 @@ function NavRoutes({ login, signup, logout }) {
 
 
         {/* Protected Routes */}
-        {/* <Route exact path="/users/:username" element={<UserProfile username="username" logout={logout} />}></Route> */}
+        <Route exact path="/users/:username" element={<UserLanding username="username" logout={logout} />}></Route>
+
         {/* <Route exact path="/lists/:id" element={<Lists id="id" />}></Route> */}
-        <Route exact path="/lists" element={<Lists logout={logout} />}></Route>
+        <Route exact path="/lists" element={<UserLanding username="username" logout={logout} />}></Route>
 
         {/* <Route exact path='/users/:username' element={<PrivateRoute />}>
           <Route exact path="/users/:username" element={<UserProfile username="username" logout={logout} />}></Route>

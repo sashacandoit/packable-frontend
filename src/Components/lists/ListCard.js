@@ -3,7 +3,7 @@ import "./ListCard.css"
 import "../styles/style.css"
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap";
 
-const ListCard = () => {
+const ListCard = ({id, searched_address, arrival_date, departure_date}) => {
   return (
     <Card className="ListCard">
       <CardBody>

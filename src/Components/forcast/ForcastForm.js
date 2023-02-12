@@ -6,7 +6,7 @@ import "./ForcastForm.css"
 import { Col, Row } from "reactstrap";
 
 
-const ForcastForm = () => {
+const ForcastForm = ({addList}) => {
 
   const navigate = useNavigate();
 
@@ -16,8 +16,8 @@ const ForcastForm = () => {
 
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    let result = await PackableApi.addList(formData)
+    // e.preventDefault();
+    let result = await addList(formData)
     if (result.success) {
       navigate("/lists");
       console.log("Success: form submitted")

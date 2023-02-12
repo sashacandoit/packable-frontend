@@ -75,11 +75,22 @@ function App() {
     }
   };
 
-
   /** Site-wide logout - removes token from local storage */
   async function logout() {
     setCurrentUser(null);
     setToken(null);
+  };
+
+
+  /**Add new list for current user  */
+  async function addList(formData) {
+    try {
+      await PackableApi.addList(formData);
+      return { success: true };
+    } catch (err) {
+      console.error("failed to add list", err);
+      return { success: false, err };
+    }
   };
 
   if (!dataLoaded) return <LoadingSpinner />
@@ -91,7 +102,7 @@ function App() {
         <UserContext.Provider value={{ currentUser, setCurrentUser }}>
           <NavBar logout={logout} />
           <main>
-          <NavRoutes login={login} signup={signup} logout={logout} />
+          <NavRoutes login={login} signup={signup} logout={logout} addList={addList} />
           </main>
         </UserContext.Provider>
       </BrowserRouter>

@@ -5,7 +5,7 @@ import "./LoginForm.css"
 import { Container, Col, Row } from "reactstrap";
 import { Typography } from "@mui/material";
 
-const Login = () => {
+const Login = ({login}) => {
 
   const navigate = useNavigate();
 
@@ -13,21 +13,21 @@ const Login = () => {
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [formErrors, setFormErrors] = useState([]);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    console.log("form submitted")
-  }
-
   // async function handleSubmit(e) {
   //   e.preventDefault();
-  //   let result = await login(formData)
-  //   if (result.success) {
-  //     navigate("/");
-  //   } else {
-  //     setFormErrors(result.errors);
-  //     console.log(formErrors)
-  //   }
+  //   console.log("form submitted")
   // }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let result = await login(formData)
+    if (result.success) {
+      navigate("/lists");
+    } else {
+      setFormErrors(result.errors);
+      console.log(formErrors)
+    }
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -8,7 +8,7 @@ import ListDetail from "../Components/lists/ListDetail";
 import Login from "../Components/auth/LoginForm";
 import Signup from "../Components/auth/SignupForm";
 
-function NavRoutes({ login, signup, logout, addList }) {
+function NavRoutes({ login, signup, logout, addList, addListItem }) {
 
   return (
     <div>
@@ -20,9 +20,9 @@ function NavRoutes({ login, signup, logout, addList }) {
 
 
         {/* Protected Routes */}
-        <Route exact path="/users/:username" element={<UserLanding username="username" logout={logout} />}></Route>
+        <Route exact path="/users/:username" element={<UserLanding username="username" logout={logout} addList={ addList }/>}></Route>
 
-        <Route exact path="/lists/:id" element={<ListDetail id="id" />}></Route>
+        <Route exact path="/lists/:id" element={<ListDetail id="id" addListItem={addListItem} />}></Route>
         <Route exact path="/lists" element={<UserLanding logout={logout} />}></Route>
 
         {/* <Route exact path='/users/:username' element={<PrivateRoute />}>

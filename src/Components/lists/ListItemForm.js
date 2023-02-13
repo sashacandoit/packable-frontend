@@ -4,18 +4,20 @@ import "./ListItemForm.css"
 import { Col, Row } from "reactstrap";
 
 
-const ListItemForm = ({ addToList }) => {
+const ListItemForm = ({ addListItem, list_id }) => {
 
-  const INITIAL_STATE = { category: "", item: "", qty: 0 };
+  console.log(list_id)
+  const INITIAL_STATE = { category: "", item: "", qty: 0, list_id: list_id };
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [formErrors, setFormErrors] = useState([]);
 
 
   async function handleSubmit(e) {
     e.preventDefault();
-    let result = await addToList(formData)
+    let result = await addListItem(formData)
     if (result.success) {
       console.log("Success: Item Added")
+      setFormData(INITIAL_STATE)
     } else {
       setFormErrors(result.errors);
       console.log(formErrors)
@@ -35,21 +37,25 @@ const ListItemForm = ({ addToList }) => {
         </h6>
           
         <Row>
-          <Col lg="4" md="6" xs="12">
+          <Col lg="3" md="6" xs="12">
             <div className="form-group">
-              <input
+              <select
                 id="category"
                 type="select"
                 name="category"
                 placeholder="Category"
-                className="ListItemForm-input form-control border-fade mb-10 mt-10"
+                className="ListItemForm-input form-control custom-select border-fade mb-10 mt-10"
                 value={formData.category}
                 onChange={handleChange}
-              />
+              >
+                <option>Clothing</option>
+                <option>Accessories</option>
+                <option>Documents</option>
+              </select>
 
             </div>
           </Col>
-          <Col lg="3" md="6" xs="12">
+          <Col lg="5" md="6" xs="12">
             <div className="form-group">
               <input
                 id="item"
@@ -62,7 +68,7 @@ const ListItemForm = ({ addToList }) => {
               />
             </div>
           </Col>
-          <Col lg="3" md="6" xs="12">
+          <Col lg="2" md="6" xs="12">
             <div className="form-group">
               <input
                 id="qty"

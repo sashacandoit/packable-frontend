@@ -5,25 +5,30 @@ import PackableApi from "../../PackableApi"
 import LoadingSpinner from "../common/LoadingSpinner";
 import "./ListDetail.css"
 import "../styles/style.css"
-import { Container, Row, Card, CardBody, Col } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import ForcastList from "../forcast/ForcastList"
 import ListItemForm from "./ListItemForm";
+import ListItems from "./ListItems";
 
-const ListDetail = () => {
+const ListDetail = ({addListItem}) => {
   const [list, setList] = useState([])
+  const [listItems, setListItems] = useState([])
   const { id } = useParams();
 
   useEffect(function getListDetails() {
     async function getList() {
-      setList(await PackableApi.getListDetails(id))
+      let list = await PackableApi.getListDetails(id)
+      setList(list)
+      setListItems(list.list_items)
     }
     getList();
-  }, [id]);
+  }, [id, list.items]);
 
   if (!list) return <LoadingSpinner />
   if (!list.days) return <LoadingSpinner />
 
   console.log(list)
+  console.log(listItems)
   return (
     <Container className="ListDetail">
       <Row>
@@ -38,70 +43,8 @@ const ListDetail = () => {
       </Row>
       
       <Row>
-        <ListItemForm />
-        <Card>
-          <CardBody>
-            <Row>
-              <Col>
-                <Card className="ListDetail-item-list-tall">
-                  <CardBody>
-                    <h6>Clothing</h6>
-
-                    <ul className="list-unstyled list-icon list-arrow list-info">
-                      <li>
-                        T-Shirts - <b>4</b>
-                      </li>
-                      <li>
-                        Shorts - <b>2</b>
-                      </li>
-                      <li>
-                        Skirts - <b>2</b>
-                      </li>
-                    </ul>
-
-                  </CardBody>
-                </Card>
-
-              </Col>
-              <Col>
-                <Card className="ListDetail-item-list">
-                  <CardBody>
-                    <h6>Accessories</h6>
-
-                    <ul className="list-unstyled list-icon list-arrow list-info">
-                      <li>
-                        Scarf - <b>1</b>
-                      </li>
-                      <li>
-                        Hat - <b>1</b>
-                      </li>
-                      <li>
-                        Gloves - <b>1</b>
-                      </li>
-                    </ul>
-                  </CardBody>
-
-                </Card>
-                <Card className="ListDetail-item-list">
-                  <CardBody>
-                    <h6>Documents</h6>
-
-                    <ul className="list-unstyled list-icon list-arrow list-info">
-                      <li>
-                        Passport - <b>1</b>
-                      </li>
-                      <li>
-                        Vaccination Card - <b>1</b>
-                      </li>
-                    </ul>
-                  </CardBody>
-
-                </Card>
-
-              </Col>
-            </Row>
-          </CardBody>
-        </Card>
+        <ListItemForm addListItem={addListItem} list_id={id} />
+        <ListItems items={listItems} />
       </Row>
     </Container>
   )

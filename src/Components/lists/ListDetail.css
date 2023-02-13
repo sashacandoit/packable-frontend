@@ -1,3 +1,11 @@
 .ListDetail {
   margin-top: 15vh;
 }
+
+.ListDetail-item-list-tall {
+  min-height: 90%;
+}
+
+/* .ListDetail-item-list {
+  min-height: 50%;
+} */

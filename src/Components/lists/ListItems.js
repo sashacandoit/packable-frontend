@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import "./ListItems.css"
 import "../styles/style.css"
 import { Row, Card, CardBody, Col } from "reactstrap";

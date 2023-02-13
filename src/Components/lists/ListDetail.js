@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
-// import UserContext from "../auth/UserContext";
 import PackableApi from "../../PackableApi"
 import LoadingSpinner from "../common/LoadingSpinner";
 import "./ListDetail.css"

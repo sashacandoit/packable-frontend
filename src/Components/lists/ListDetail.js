@@ -1,15 +1,15 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
-import UserContext from "../auth/UserContext";
+// import UserContext from "../auth/UserContext";
 import PackableApi from "../../PackableApi"
+import LoadingSpinner from "../common/LoadingSpinner";
 import "./ListDetail.css"
 import "../styles/style.css"
 import { Container, Row, Card, CardBody, Col } from "reactstrap";
-// import ForcastList from "../forcast/ForcastList"
+import ForcastList from "../forcast/ForcastList"
 
 const ListDetail = () => {
   const [list, setList] = useState([])
-  const { currentUser } = useContext(UserContext)
   const { id } = useParams();
 
   useEffect(function getListDetails() {
@@ -19,13 +19,22 @@ const ListDetail = () => {
     getList();
   }, [id]);
 
+  if (!list) return <LoadingSpinner />
+  if (!list.days) return <LoadingSpinner />
+
   console.log(list)
   return (
     <Container className="ListDetail">
       <Row>
+        <h2>
+          {list.resolvedAddress}
+        </h2>
+        <h5>
+          Traveling on: {list.arrival_date}
+        </h5>
         <Card>
           <CardBody className="ListDetail-forcast">
-            {/* <ForcastList /> */}
+            <ForcastList days={list.days} />
             <p></p>
           </CardBody>
         </Card>

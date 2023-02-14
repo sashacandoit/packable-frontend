@@ -15,11 +15,12 @@ const ForcastForm = ({addList}) => {
 
 
   async function handleSubmit(e) {
-    // e.preventDefault();
+    e.preventDefault();
     let result = await addList(formData)
+    let id = result.id;
     if (result.success) {
-      navigate("/lists");
-      console.log("Success: form submitted")
+      navigate(`/lists/${id}`);
+      console.log("Success: form submitted. Redirecting to List")
     } else {
       setFormErrors(result.errors);
       console.log(formErrors)

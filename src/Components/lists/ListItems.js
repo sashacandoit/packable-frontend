@@ -1,6 +1,7 @@
 import React from "react"
 import "./ListItems.css"
 import "../styles/style.css"
+import Item from "./Item"
 import { Row, Card, CardBody, Col } from "reactstrap";
 
 const ListItems = ({ items }) => {
@@ -10,60 +11,15 @@ const ListItems = ({ items }) => {
       <CardBody>
         <Row>
           <Col>
-            <Card className="ListItems-section-tall">
-              <CardBody>
-                <h6>Clothing</h6>
+            <h6>Packing List</h6>
+            <table className="ListItems-table table table-xl">
+              <tbody>
+                {items.map(i => (
+                  <Item key={i.id} id={i.id} category={i.category} item={i.item} qty={i.qty} />
+                ))}
 
-                <ul className="list-unstyled list-icon list-arrow list-info">
-                  <li>
-                    T-Shirts - <b>4</b>
-                  </li>
-                  <li>
-                    Shorts - <b>2</b>
-                  </li>
-                  <li>
-                    Skirts - <b>2</b>
-                  </li>
-                </ul>
-
-              </CardBody>
-            </Card>
-
-          </Col>
-          <Col>
-            <Card className="ListItems-section">
-              <CardBody>
-                <h6>Accessories</h6>
-
-                <ul className="list-unstyled list-icon list-arrow list-info">
-                  <li>
-                    Scarf - <b>1</b>
-                  </li>
-                  <li>
-                    Hat - <b>1</b>
-                  </li>
-                  <li>
-                    Gloves - <b>1</b>
-                  </li>
-                </ul>
-              </CardBody>
-
-            </Card>
-            <Card className="ListItems-section">
-              <CardBody>
-                <h6>Documents</h6>
-
-                <ul className="list-unstyled list-icon list-arrow list-info">
-                  <li>
-                    Passport - <b>1</b>
-                  </li>
-                  <li>
-                    Vaccination Card - <b>1</b>
-                  </li>
-                </ul>
-              </CardBody>
-
-            </Card>
+              </tbody>
+            </table>
 
           </Col>
         </Row>

@@ -1,0 +1,9 @@
+.UpdateItem-container {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.qty-cell {
+  max-width: 30px;
+}

@@ -7,20 +7,31 @@ import AddListItemForm from "./AddListItemForm";
 import UpdateItems from "./UpdateListItems";
 import { Row, Card, CardBody, Col } from "reactstrap";
 
-const ListItems = ({ listItems, addListItem, list_id }) => {
+const ListItems = ({ listItems, list_id }) => {
 
   const [items, setItems] = useState(listItems)
 
-  // useEffect(function getListItems() {
-  //   async function getItems() {
-  //     let items = await PackableApi.getItems()
-  //     setListItems(...listItems, items)
-  //   }
-  //   getItems();
-  // }, [listItems]);
+  async function addListItem(formData) {
+    try {
+      await PackableApi.addListItem(formData);
+      return { success: true };
+    } catch (err) {
+      console.error("failed to add item", err);
+      return { success: false, err };
+    }
+  };
+
+  async function updateItem(formData, item_id) {
+    try {
+      await PackableApi.updateListItem(item_id, formData);
+      return { success: true };
+    } catch (err) {
+      console.error("failed to add item", err);
+      return { success: false, err };
+    }
+  };
 
   if (!listItems) return <LoadingSpinner />
-  // if (!listItems) return <LoadingSpinner />
 
   console.log(list_id)
   console.log(items)
@@ -28,7 +39,7 @@ const ListItems = ({ listItems, addListItem, list_id }) => {
     <Card>
       <CardBody>
         <AddListItemForm addListItem={addListItem} list_id={list_id} />
-        <UpdateItems items={listItems} />
+        <UpdateItems items={listItems} updateItem={updateItem} />
       </CardBody>
     </Card>
     

@@ -2,19 +2,23 @@ import React, {useState} from "react"
 import "./ListItems.css"
 import "../styles/style.css"
 import Item from "./Item"
-import { Row, Card, CardBody, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
-const UpdateItems = ({ items, addItem }) => {
-  console.log(items)
+const UpdateItems = ({ items, updateItem }) => {
+  let itemsArr = Object.values(items)
+  console.log(itemsArr)
 
-  const INITIAL_STATE = { items };
+  const INITIAL_STATE = items ;
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [formErrors, setFormErrors] = useState([]);
+
+  localStorage.setItem('items', JSON.stringify(formData))
 
 
   async function handleSubmit(e) {
     e.preventDefault();
-    let result = await addItem(formData)
+
+    let result = await updateItem(formData)
     let id = result.id;
     if (result.success) {
       console.log("Success: items updated")
@@ -22,11 +26,6 @@ const UpdateItems = ({ items, addItem }) => {
       setFormErrors(result.errors);
       console.log(formErrors)
     }
-  }
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(login => ({ ...login, [name]: value }))
   }
 
   return (
@@ -40,14 +39,12 @@ const UpdateItems = ({ items, addItem }) => {
             <tbody>
               {items.map(i => (
                 <Item
-                  handleChange={handleChange}
-                  key={i.id}
-                  id={i.id}
-                  category={i.category}
-                  item={i.item}
-                  qty={i.qty} />
+                key={i.id}
+                id={i.id}
+                category={i.category}
+                item={i.item}
+                qty={i.qty} />
               ))}
-
             </tbody>
           </table>
         </form>

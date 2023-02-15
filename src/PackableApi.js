@@ -55,24 +55,22 @@ class PackableApi {
   }
 
   /** Get the current user. */
-
   static async getUser(username) {
     let res = await this.request(`users/${username}`);
     return res.user;
   }
 
   /** Get all user lists (ordered by arrival date). */
-
   static async getLists() {
     let res = await this.request(`lists`);
     return res.lists;
   }
 
-  /** Add new lists and get forcast details */
+  /** Add new list */
   static async addList(data) {
     console.log("Sending:", data)
     let res = await this.request(`lists`, data, "post");
-    return res.token;
+    return res.list;
   }
 
   /** Get list details by id. */
@@ -81,8 +79,13 @@ class PackableApi {
     return res.list;
   }
 
-  /** Get all items for a selected list. */
+  /** Get forcast with data from list id. */
+  static async getForcast(list_id) {
+    let res = await this.request(`lists/${list_id}/forcast`);
+    return res.forcast;
+  }
 
+  /** Get all items for a selected list. */
   static async getItems() {
     let res = await this.request(`items`);
     return res.items;
@@ -92,16 +95,17 @@ class PackableApi {
   static async addListItem(data) {
     console.log("Sending:", data)
     let res = await this.request(`items`, data, "post");
-    return res.token;
+    return res.list;
   }
-
+  
   /** Update list item */
   static async updateListItem(item_id, data) {
     console.log("Sending:", data)
     let res = await this.request(`items/${item_id}`, data, "patch");
-    return res.token;
+    return res;
   }
 
 }
 
 export default PackableApi;
+

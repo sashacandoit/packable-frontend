@@ -17,14 +17,16 @@ const UpdateItems = ({ items, updateItem }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    let localItems = JSON.parse(localStorage.getItem('items'))
 
-    let result = await updateItem(formData)
-    let id = result.id;
-    if (result.success) {
-      console.log("Success: items updated")
-    } else {
-      setFormErrors(result.errors);
-      console.log(formErrors)
+    for (let item of localItems) {
+      let result = await updateItem(item.id, item.qty)
+      if (result.success) {
+        console.log("Success: items updated")
+      } else {
+        setFormErrors(result.errors);
+        console.log(formErrors)
+      }
     }
   }
 

@@ -5,16 +5,16 @@ import "../styles/style.css"
 
 const Item = ({ item, qty, id, category }) => {
 
-  const INITIAL_STATE = { qty };
+  const INITIAL_STATE = { id, item, category, qty };
   const [formData, setFormData] = useState(INITIAL_STATE);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(formData => ({ ...formData, [name]: value }))
-    
+
     let localItems = JSON.parse(localStorage.getItem('items'))
     let index = localItems.map(function (i) { return i.id; }).indexOf(id);
-    localItems[index] = formData.qty
+    localItems[index] = formData
     localStorage.setItem('items', JSON.stringify(localItems))
   }
 

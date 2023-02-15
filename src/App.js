@@ -82,28 +82,6 @@ function App() {
   };
 
 
-  /**Add new list for current user  */
-  async function addList(formData) {
-    try {
-      await PackableApi.addList(formData);
-      return { success: true };
-    } catch (err) {
-      console.error("failed to add list", err);
-      return { success: false, err };
-    }
-  };
-
-  /**Add list item to current user list */
-  async function addListItem(formData) {
-    try {
-      await PackableApi.addListItem(formData);
-      return { success: true };
-    } catch (err) {
-      console.error("failed to add item", err);
-      return { success: false, err };
-    }
-  };
-
   if (!dataLoaded) return <LoadingSpinner />
 
 
@@ -113,7 +91,7 @@ function App() {
         <UserContext.Provider value={{ currentUser, setCurrentUser }}>
           <NavBar logout={logout} />
           <main>
-          <NavRoutes login={login} signup={signup} logout={logout} addList={addList} addListItem={addListItem} />
+          <NavRoutes login={login} signup={signup} logout={logout} />
           </main>
         </UserContext.Provider>
       </BrowserRouter>

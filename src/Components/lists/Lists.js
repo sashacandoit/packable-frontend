@@ -2,14 +2,13 @@ import React from "react"
 import "./Lists.css"
 import "../styles/style.css"
 import { Row, Col } from "reactstrap";
-
 import ListCard from "./ListCard"
 
-const Lists = ({ lists }) => {
-console.log(lists)
+const Lists = ({ userLists }) => {
+  console.log(userLists)
   return (
     <Row className="Lists-group" >
-      {lists.map(list => (
+      {userLists.map(list => (
         
         <Col key={list.id}>
           <ListCard

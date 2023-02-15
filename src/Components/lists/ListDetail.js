@@ -4,43 +4,77 @@ import PackableApi from "../../PackableApi"
 import LoadingSpinner from "../common/LoadingSpinner";
 import "./ListDetail.css"
 import "../styles/style.css"
-import { Container, Row, Card, CardBody } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import ForcastList from "../forcast/ForcastList"
 import ListItems from "./ListItems";
 
-const ListDetail = ({addListItem}) => {
-  const [list, setList] = useState([])
-  const [listItems, setListItems] = useState([])
-
+const ListDetail = () => {
   const { id } = useParams();
 
-  useEffect(function getListDetails() {
+  const [list, setList] = useState([])
+  const [listItems, setListItems] = useState([])
+  const [forcast, setForcast] = useState([])
+  
+
+  useEffect(function getListAndItems() {
     async function getList() {
       let list = await PackableApi.getListDetails(id)
       setList(list);
-      setListItems(list.list_items)
+      // if (list.list_items) {
+      //   setListItems(...listItems, list.list_items)
+      // }
     }
     getList();
+  }, [id, listItems]);
+
+
+  useEffect(function getListForcast() {
+    async function getListForcast() {
+      let forcastRes = await PackableApi.getForcast(id)
+      setForcast(forcastRes);
+    }
+    getListForcast();
   }, [id]);
 
-  if (!list) return <LoadingSpinner />
-  if (!list.days) return <LoadingSpinner />
+  /**Function to add list item to current user list */
+  async function addListItem(formData) {
+    try {
+      const newItem = await PackableApi.addListItem(formData);
+      setListItems(...listItems, newItem)
+      return { success: true };
+    } catch (err) {
+      console.error("failed to add item", err);
+      return { success: false, err };
+    }
+  };
 
-  console.log(list)
+  async function updateItem(item_id, formData) {
+    try {
+      const updatedItem = await PackableApi.updateListItem(item_id, formData);
+      setListItems(...listItems, updatedItem)
+      return { success: true };
+    } catch (err) {
+      console.error("failed to add item", err);
+      return { success: false, err };
+    }
+  };
+
+  if (!list ) return <LoadingSpinner />
+
   return (
     <Container className="ListDetail">
       <Row>
         <h2>
-          {list.resolvedAddress}
+          {forcast.resolvedAddress}
         </h2>
         <h5 className="text-secondary">
           Traveling on: {list.arrival_date}
         </h5>
-        <ForcastList days={list.days} />
+        <ForcastList days={forcast.days} />
       </Row>
       
       <Row>
-        <ListItems addListItem={addListItem} listItems={listItems} list_id={list.id} />
+          <ListItems addListItem={addListItem} list_id={list.id} updateItem={updateItem} />
       </Row>
     </Container>
   )

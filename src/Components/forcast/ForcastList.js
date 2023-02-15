@@ -3,8 +3,11 @@ import "./ForcastList.css"
 import "../styles/style.css"
 import { Row, Col } from "reactstrap";
 import ForcastDayCard from "./ForcastDayCard";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 const ForcastList = ({ days }) => {
+  if (!days) return <LoadingSpinner />
+  
   console.log(days)
   return (
     <Row className="ForcastList-group" >

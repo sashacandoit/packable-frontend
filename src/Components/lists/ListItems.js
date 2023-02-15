@@ -5,36 +5,25 @@ import PackableApi from "../../PackableApi"
 import LoadingSpinner from "../common/LoadingSpinner";
 import AddListItemForm from "./AddListItemForm";
 import UpdateItems from "./UpdateListItems";
-import { Row, Card, CardBody, Col } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 
-const ListItems = ({ listItems, list_id }) => {
+const ListItems = ({ addListItem, updateItem, listItems, list_id }) => {
 
-  const [items, setItems] = useState(listItems)
+  // const [items, setItems] = useState(listItems)
 
-  async function addListItem(formData) {
-    try {
-      await PackableApi.addListItem(formData);
-      return { success: true };
-    } catch (err) {
-      console.error("failed to add item", err);
-      return { success: false, err };
-    }
-  };
+  // async function addListItem(formData) {
+  //   try {
+  //     await PackableApi.addListItem(formData);
+  //     return { success: true };
+  //   } catch (err) {
+  //     console.error("failed to add item", err);
+  //     return { success: false, err };
+  //   }
+  // };
 
-  async function updateItem(formData, item_id) {
-    try {
-      await PackableApi.updateListItem(item_id, formData);
-      return { success: true };
-    } catch (err) {
-      console.error("failed to add item", err);
-      return { success: false, err };
-    }
-  };
 
   if (!listItems) return <LoadingSpinner />
 
-  console.log(list_id)
-  console.log(items)
   return (
     <Card>
       <CardBody>

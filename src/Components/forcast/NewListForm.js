@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import "../styles/style.css"
-import "./ForcastForm.css"
+import "./NewListForm.css"
 import { Col, Row } from "reactstrap";
 
 
-const ForcastForm = ({addList}) => {
+const NewListForm = ({addList}) => {
 
   const navigate = useNavigate();
 
@@ -17,10 +17,9 @@ const ForcastForm = ({addList}) => {
   async function handleSubmit(e) {
     e.preventDefault();
     let result = await addList(formData)
-    let id = result.id;
-    if (result.success) {
-      navigate(`/lists/${id}`);
-      console.log("Success: form submitted. Redirecting to List")
+    console.log(result)
+    if (result.id) {
+      navigate(`/lists/${result.id}`);
     } else {
       setFormErrors(result.errors);
       console.log(formErrors)
@@ -90,4 +89,4 @@ const ForcastForm = ({addList}) => {
   )
 }
 
-export default ForcastForm;
+export default NewListForm;

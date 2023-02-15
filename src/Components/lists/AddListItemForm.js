@@ -16,7 +16,6 @@ const AddListItemForm = ({ addListItem, list_id }) => {
     e.preventDefault();
     let result = await addListItem(formData)
     if (result.success) {
-      console.log("Success: Item Added")
       setFormData(INITIAL_STATE)
     } else {
       setFormErrors(result.errors);

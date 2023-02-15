@@ -3,7 +3,7 @@ import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 // import UserContext from "../auth/UserContext";
 import "./NavBar.css"
 
-const NavBar = () => {
+const NavBar = ({logout}) => {
 
   // const loggedInUserNav = () => {
   //   return (
@@ -21,6 +21,9 @@ const NavBar = () => {
         </NavItem>
         <NavItem>
           <NavLink href="/login">Login</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="/" onClick={logout}>Logout</NavLink>
         </NavItem>
       </>
     )

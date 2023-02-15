@@ -70,7 +70,8 @@ const ListItems = () => {
   function handleUpCount(index) {
     const upCountItems = listItems.map((item, idx) => {
       if (idx === index) {
-        return item.qty +1
+        let qty = item.qty + 1
+        return {...item, qty:qty}
       }
       return item
     })
@@ -80,7 +81,8 @@ const ListItems = () => {
   function handleDownCount(index) {
     const downCountItems = listItems.map((item, idx) => {
       if (idx === index) {
-        return item.qty - 1
+        let qty = item.qty - 1
+        return { ...item, qty: qty }
       }
       return item
     })

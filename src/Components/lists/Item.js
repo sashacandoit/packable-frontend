@@ -3,7 +3,7 @@ import "./Item.css"
 import "../styles/style.css"
 
 
-const Item = ({ handleRemove, handleUpCount, handleDownCount, item }) => {
+const Item = ({ idx, handleRemove, handleUpCount, handleDownCount, item }) => {
 
   // const INITIAL_STATE = { id, item, category, qty };
   // const [formData, setFormData] = useState(INITIAL_STATE);
@@ -26,11 +26,11 @@ const Item = ({ handleRemove, handleUpCount, handleDownCount, item }) => {
   return (
     <tr className="Item">
       <td className="Item-qty-cell text-center">
-        <button className="Item-qty-arrow text-link" onClick={() => handleUpCount(item.id)}>
+        <button className="Item-qty-arrow text-link" onClick={() => handleUpCount(idx)}>
           <i className="fas fa-arrow-up mb-5"></i>
         </button>
         <span className="Item-qty fs-18">{item.qty}</span>
-        <button className="Item-qty-arrow text-link" onClick={() => handleDownCount(item.id)}>
+        <button className="Item-qty-arrow text-link" onClick={() => handleDownCount(idx)}>
           <i className="fas fa-arrow-down mb-5"></i>
         </button>
         {/* <input

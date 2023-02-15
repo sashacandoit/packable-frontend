@@ -43,13 +43,15 @@ const UpdateItems = ({ handleRemove, handleUpCount, handleDownCount, items }) =>
           </button> */}
           <table className="ListItems-table table table-xl">
             <tbody>
-              {items.map(i => (
+              {items.map((item, idx) => (
                 <Item
-                  key={i.id}
+                  key={item.id}
                   handleRemove={handleRemove}
                   handleUpCount={handleUpCount}
                   handleDownCount={handleDownCount}
-                  item={i} />
+                  item={item}
+                  idx={idx}
+                />
               ))}
             </tbody>
           </table>

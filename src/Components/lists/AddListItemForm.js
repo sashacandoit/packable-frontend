@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "../styles/style.css"
 import "./AddListItemForm.css"
 import { Col, Row } from "reactstrap";
+import { useParams } from "react-router-dom";
 
+const AddListItemForm = ({ addListItem }) => {
 
-const AddListItemForm = ({ addListItem, list_id }) => {
+  const { list_id } = useParams();
 
-  console.log(list_id)
-  const INITIAL_STATE = { category: "", item: "", qty: 0, list_id: list_id };
+  const INITIAL_STATE = { category: "", item: "", qty: 0 };
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [formErrors, setFormErrors] = useState([]);
 
@@ -25,7 +26,7 @@ const AddListItemForm = ({ addListItem, list_id }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(formData => ({ ...formData, [name]: value }))
+    setFormData(formData => ({ ...formData, list_id: list_id, [name]: value }))
   }
 
   return (

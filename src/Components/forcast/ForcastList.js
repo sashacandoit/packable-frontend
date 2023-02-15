@@ -12,7 +12,7 @@ const ForcastList = ({ formatDate, days }) => {
     <Row className="ForcastList-group mt-50 mb-50" >
       {days.map(day => (
 
-        <Col key={day.datetime} className="ForcastList-card">
+        <Col key={day.datetime} className="ForcastList-card col-lg-2 col-sm-6 col-md-3">
           <ForcastDayCard
             formatDate={formatDate}
             tempmax={day.tempmax}

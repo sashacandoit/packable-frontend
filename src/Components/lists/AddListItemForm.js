@@ -86,6 +86,7 @@ const AddListItemForm = ({ addListItem }) => {
                 <option>Category</option>
                 <option>Clothing</option>
                 <option>Accessories</option>
+                <option>Electronics</option>
                 <option>Documents</option>
               </select>
 

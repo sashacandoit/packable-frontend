@@ -6,27 +6,33 @@ import AddListItemForm from "./AddListItemForm";
 import UpdateItems from "./UpdateListItems";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { Row, Col, Card, CardBody } from "reactstrap";
+import { TemperateList, ColdWeatherList, HotWeatherList } from "../helpers/calcListItems"
 import { v4 as uuid } from "uuid";
 
-const ListItems = () => {
+const ListItems = ({forcast}) => {
+
+  if (!forcast) return <LoadingSpinner />
 
   const { id } = useParams();
-  const INITIAL_STATE = [
-    { category: "Clothing", item: "socks", qty: 4, id: uuid(), list_id: id },
-    { category: "Accessories", item: "sunglasses", qty: 1, id: uuid(), list_id: id },
-    { category: "Documents", item: "passport", qty: 1, id: uuid(), list_id: id }
-    /** add function for getting starter list data */
-  ]
+  const [listItems, setListItems] = useState([])
 
-  const [listItems, setListItems] = useState(INITIAL_STATE)
+  useEffect(function getListItems() {
+    function getListItems() {
+      let packingList = [];
 
-  // useEffect(function getListItems() {
-  //   async function getListItems() {
-  //     let items = await PackableApi.getItems(id)
-  //     setListItems(items);
-  //   }
-  //   getListItems();
-  // }, [id]);
+      if (forcast[0].temp > 68) {
+        packingList = HotWeatherList(forcast.length)
+      }
+      if (forcast[0].temp < 50) {
+        packingList = ColdWeatherList(forcast.length)
+      }
+      else {
+        packingList = TemperateList(forcast.length)
+      }
+      setListItems(packingList.map(obj => ({ ...obj, id: uuid() })))
+    }
+    getListItems();
+  }, [id]);
 
 
   /**Function to add list item to current user list */
@@ -35,29 +41,6 @@ const ListItems = () => {
     setListItems(items => [...items, { ...newItem, id: uuid() }]);
     //makes a new array with the original items and adds an object containing the new item
   };
-
-  // async function addListItem(formData) {
-  //   try {
-  //     const newItem = await PackableApi.addListItem(id, formData);
-  //     setListItems(items => [...items, newItem])
-  //     return { success: true };
-  //   } catch (err) {
-  //     console.error("failed to add item", err);
-  //     return { success: false, err };
-  //   }
-  // };
-
-  /**Function to update list item in current user list */
-  // async function updateItem(item_id, formData) {
-  //   try {
-  //     const updatedItem = await PackableApi.updateListItem(item_id, formData);
-  //     setListItems(items => [...items, updatedItem])
-  //     return { success: true };
-  //   } catch (err) {
-  //     console.error("failed to add item", err);
-  //     return { success: false, err };
-  //   }
-  // };
 
   /**Function to remove list item in current user list */
   function handleRemove(id) {
@@ -88,19 +71,6 @@ const ListItems = () => {
     })
     setListItems(downCountItems);
   }
-
-
-  // async function deleteItem(item_id) {
-  //   try {
-  //     await PackableApi.deleteListItem(item_id);
-  //     setListItems(listItems)
-  //     return { success: true };
-  //   } catch (err) {
-  //     console.error("failed to delete item", err);
-  //     return { success: false, err };
-  //   }
-  // };
-
 
   const NoListItems = () => {
     return (

@@ -38,7 +38,7 @@ const ListDetail = () => {
   }, [id]);
 
 
-  if (!list ) return <LoadingSpinner />
+  if (!list || !forcast ) return <LoadingSpinner />
 
   return (
     <Container className="ListDetail">
@@ -53,7 +53,7 @@ const ListDetail = () => {
       </Row>
       
       <Row>
-          <ListItems />
+        <ListItems forcast={ forcast.days } />
       </Row>
     </Container>
   )

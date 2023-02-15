@@ -23,10 +23,10 @@ const ListDetail = () => {
       // if (list.list_items) {
       //   setListItems(...listItems, list.list_items)
       // }
-      setListItems(...listItems, list.list_items)
+      setListItems(list.list_items)
     }
     getList();
-  }, [id, listItems]);
+  }, [id]);
 
 
   useEffect(function getListForcast() {

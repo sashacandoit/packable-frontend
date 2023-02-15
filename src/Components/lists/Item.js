@@ -1,27 +1,9 @@
-import React, {useState} from "react"
+import React from "react"
 import "./Item.css"
 import "../styles/style.css"
 
 
 const Item = ({ idx, handleRemove, handleUpCount, handleDownCount, item }) => {
-
-  // const INITIAL_STATE = { id, item, category, qty };
-  // const [formData, setFormData] = useState(INITIAL_STATE);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData(formData => ({ ...formData, [name]: value }))
-
-  //   let localItems = JSON.parse(localStorage.getItem('items'))
-  //   let index = localItems.map(function (i) { return i.id; }).indexOf(id);
-  //   localItems[index] = formData
-  //   localStorage.setItem('items', JSON.stringify(localItems))
-  // }
-
-  // let localItems = JSON.parse(localStorage.getItem('items'))
-  // let index = localItems.map(function (i) { return i.id; }).indexOf(id);
-  // localItems[index] = formData.qty
-  // localStorage.setItem('items', JSON.stringify(localItems))
 
   return (
     <tr className="Item">
@@ -33,15 +15,7 @@ const Item = ({ idx, handleRemove, handleUpCount, handleDownCount, item }) => {
         <button className="Item-qty-arrow text-link" onClick={() => handleDownCount(idx)}>
           <i className="fas fa-arrow-down mb-5"></i>
         </button>
-        {/* <input
-          onChange={handleChange}
-          type="number"
-          step="1"
-          min="0"
-          name="qty"
-          value={formData.qty}
-          title="Qty"
-          className="Item-qty-input form-control fs-16 text-center qty" /> */}
+        
       </td>
       <td className="Item-cell lead fs-16">{item.item}</td>
       <td className="Item-cell text-primary">{item.category}</td>

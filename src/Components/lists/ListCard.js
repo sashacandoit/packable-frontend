@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom";
 import "./ListCard.css"
 import "../styles/style.css"
-import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap";
+import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap";
 import moment from 'moment'
 
 

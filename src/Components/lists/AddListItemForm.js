@@ -20,14 +20,6 @@ const AddListItemForm = ({ addListItem }) => {
 
     addListItem(newItem);
     setFormData(INITIAL_STATE);
-
-    // let result = await addListItem(newItem)
-    // if (result.success) {
-    //   setFormData(INITIAL_STATE)
-    // } else {
-    //   setFormErrors(result.errors);
-    //   console.log(formErrors)
-    // }
   }
 
   const handleChange = (e) => {

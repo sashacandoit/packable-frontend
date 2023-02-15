@@ -32,7 +32,6 @@ const UpdateItems = ({ handleRemove, handleUpCount, handleDownCount, items }) =>
   // }
 
   if (!items) return <LoadingSpinner />
-  console.log(items)
 
   return (
     <Row className="mt-10">
@@ -43,7 +42,8 @@ const UpdateItems = ({ handleRemove, handleUpCount, handleDownCount, items }) =>
           </button> */}
           <table className="ListItems-table table table-xl">
             <tbody>
-              {items.map((item, idx) => (
+            {items.map((item, idx) => (
+                
                 <Item
                   key={item.id}
                   handleRemove={handleRemove}

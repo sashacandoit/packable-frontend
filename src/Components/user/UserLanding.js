@@ -24,6 +24,7 @@ const UserLanding = ({ logout }) => {
     getLists();
   }, [currentUser]);
 
+
   /**Add new list for current user  */
   async function addList(formData) {
     try {
@@ -35,6 +36,16 @@ const UserLanding = ({ logout }) => {
       return { success: false, err };
     }
   };
+
+  async function handleDelete(id) {
+    await PackableApi.deleteList(`${id}`);
+    setUserLists(
+      userLists.filter((list) => {
+        return list.id !== id;
+      })
+    );
+  }
+
 
   return (
 
@@ -49,7 +60,7 @@ const UserLanding = ({ logout }) => {
         </Card>
       </Row>
       {!userLists ? <LoadingSpinner /> :
-        <Lists userLists={userLists} />}
+        <Lists userLists={userLists} deleteList={handleDelete} />}
 
     </Container>
   )

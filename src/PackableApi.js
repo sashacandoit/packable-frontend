@@ -79,6 +79,13 @@ class PackableApi {
     return res.list;
   }
 
+  /** Delete list */
+  static async deleteList(list_id) {
+    let res = await axios.delete(`${BASE_URL}/lists/${list_id}`)
+    // let res = await this.request(`lists/${list_id}`, "delete");
+    return res;
+  }
+
   /** Get forcast with data from list id. */
   static async getForcast(list_id) {
     let res = await this.request(`lists/${list_id}/forcast`);

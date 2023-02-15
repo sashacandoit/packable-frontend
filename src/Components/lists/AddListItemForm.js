@@ -18,13 +18,16 @@ const AddListItemForm = ({ addListItem }) => {
       item: formData.item
     }
 
-    let result = await addListItem(newItem)
-    if (result.success) {
-      setFormData(INITIAL_STATE)
-    } else {
-      setFormErrors(result.errors);
-      console.log(formErrors)
-    }
+    addListItem(newItem);
+    setFormData(INITIAL_STATE);
+
+    // let result = await addListItem(newItem)
+    // if (result.success) {
+    //   setFormData(INITIAL_STATE)
+    // } else {
+    //   setFormErrors(result.errors);
+    //   console.log(formErrors)
+    // }
   }
 
   const handleChange = (e) => {
@@ -80,6 +83,7 @@ const AddListItemForm = ({ addListItem }) => {
                 value={formData.category}
                 onChange={handleChange}
               >
+                <option>Category</option>
                 <option>Clothing</option>
                 <option>Accessories</option>
                 <option>Documents</option>

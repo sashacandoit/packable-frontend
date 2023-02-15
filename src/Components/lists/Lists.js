@@ -4,18 +4,21 @@ import "../styles/style.css"
 import { Row, Col } from "reactstrap";
 import ListCard from "./ListCard"
 
-const Lists = ({ userLists }) => {
+const Lists = ({ userLists, handleDelete }) => {
   console.log(userLists)
+
+
   return (
     <Row className="Lists-group" >
       {userLists.map(list => (
         
-        <Col key={list.id}>
+        <Col className="col-md-3" key={list.id}>
           <ListCard
             id={list.id}
             searched_address={list.searched_address}
             arrival_date={list.arrival_date}
             departure_date={list.departure_date}
+            deleteList={handleDelete}
           />
         </Col>
       ))}

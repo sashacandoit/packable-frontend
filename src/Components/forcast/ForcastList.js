@@ -7,8 +7,7 @@ import LoadingSpinner from "../common/LoadingSpinner";
 
 const ForcastList = ({ days }) => {
   if (!days) return <LoadingSpinner />
-  
-  console.log(days)
+
   return (
     <Row className="ForcastList-group" >
       {days.map(day => (

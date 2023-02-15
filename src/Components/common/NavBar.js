@@ -1,17 +1,25 @@
-import React from "react";
+import React, {useContext} from "react";
+import UserContext from "../auth/UserContext";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 // import UserContext from "../auth/UserContext";
 import "./NavBar.css"
 
-const NavBar = ({logout}) => {
+const NavBar = ({ logout }) => {
+  
+  const { currentUser } = useContext(UserContext)
 
-  // const loggedInUserNav = () => {
-  //   return (
-  //     <NavItem>
-  //       <NavLink href={`/users/${currentUser.username}`}>Hi {currentUser.username}</NavLink>
-  //     </NavItem>
-  //   )
-  // }
+  const loggedInUserNav = () => {
+    return (
+      <> 
+        <NavItem>
+          <NavLink href={`/lists`}>{(currentUser.lists).length} Lists</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="/" onClick={logout}>Logout</NavLink>
+        </NavItem>
+      </>
+    )
+  }
 
   const loggedOutNav = () => {
     return (
@@ -21,9 +29,6 @@ const NavBar = ({logout}) => {
         </NavItem>
         <NavItem>
           <NavLink href="/login">Login</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="/" onClick={logout}>Logout</NavLink>
         </NavItem>
       </>
     )
@@ -37,8 +42,8 @@ const NavBar = ({logout}) => {
         </NavbarBrand>
       </Nav>
       <Nav className="nav-links-sm" fill>
-        {/* {currentUser ? loggedInNav() : loggedOutNav()} */}
-        {loggedOutNav()}
+        {currentUser ? loggedInUserNav() : loggedOutNav()}
+        {/* {loggedOutNav()} */}
       </Nav>
     </Navbar>
   )

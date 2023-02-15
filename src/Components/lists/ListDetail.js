@@ -7,6 +7,8 @@ import "../styles/style.css"
 import { Container, Row } from "reactstrap";
 import ForcastList from "../forcast/ForcastList"
 import ListItems from "./ListItems";
+import moment from 'moment'
+
 
 const ListDetail = () => {
   const { id } = useParams();
@@ -14,6 +16,9 @@ const ListDetail = () => {
   const [list, setList] = useState([])
   const [forcast, setForcast] = useState([])
   
+  const formatDate = (date) => {
+    return moment(date).format('MMMM Do YYYY')
+  }
 
   useEffect(function getListDetails() {
     async function getList() {
@@ -32,28 +37,6 @@ const ListDetail = () => {
     getListForcast();
   }, [id]);
 
-  // /**Function to add list item to current user list */
-  // async function addListItem(formData) {
-  //   try {
-  //     const newItem = await PackableApi.addListItem(formData);
-  //     setListItems(...listItems, newItem)
-  //     return { success: true };
-  //   } catch (err) {
-  //     console.error("failed to add item", err);
-  //     return { success: false, err };
-  //   }
-  // };
-
-  // async function updateItem(item_id, formData) {
-  //   try {
-  //     const updatedItem = await PackableApi.updateListItem(item_id, formData);
-  //     setListItems(...listItems, updatedItem)
-  //     return { success: true };
-  //   } catch (err) {
-  //     console.error("failed to add item", err);
-  //     return { success: false, err };
-  //   }
-  // };
 
   if (!list ) return <LoadingSpinner />
 
@@ -64,9 +47,9 @@ const ListDetail = () => {
           {forcast.resolvedAddress}
         </h2>
         <h5 className="text-secondary">
-          Traveling on: {list.arrival_date}
+          Traveling on: {formatDate(list.arrival_date)}
         </h5>
-        <ForcastList days={forcast.days} />
+        <ForcastList formatDate={formatDate} days={forcast.days} />
       </Row>
       
       <Row>

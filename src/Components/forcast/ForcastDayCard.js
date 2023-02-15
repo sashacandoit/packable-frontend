@@ -3,25 +3,32 @@ import "./ForcastDayCard.css"
 import "../styles/style.css"
 import { Card, CardBody, CardSubtitle } from "reactstrap";
 
-const ForcastDayCard = ({ tempmax, tempmin, datetime, icon }) => {
+
+const ForcastDayCard = ({ formatDate, tempmax, tempmin, datetime, icon }) => {
+
+
   return (
     <Card className="ForcastCard card-w-rised-img-top">
       <img
         className="ForcastCard-img card-rised-img-top mb-20"
         alt={icon}
-        src="https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/1st%20Set%20-%20Color/partly-cloudy-day.png"
+        src={`/icons/${icon}.png`}
       />
       <CardBody>
         <CardSubtitle
-          className="ForcastCard-date mb-2 text-muted"
+          className="ForcastCard-date mb-2 text-primary"
           tag="h6"
         >
-          {datetime}
+          {formatDate(datetime)}
         </CardSubtitle>
-        <h6 className="ForcastCard-temp card-title">
+        <p className="comment-date">
+          {icon}
+        </p>
+        <p className="ForcastCard-temp card-title">
           Low: {tempmin}° F <br/>
           High: {tempmax}° F
-        </h6>
+        </p>
+        
       </CardBody>
     </Card>
 

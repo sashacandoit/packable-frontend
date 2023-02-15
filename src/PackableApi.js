@@ -86,15 +86,15 @@ class PackableApi {
   }
 
   /** Get all items for a selected list. */
-  static async getItems() {
-    let res = await this.request(`items`);
+  static async getItems(list_id) {
+    let res = await this.request(`lists/${list_id}/items`);
     return res.items;
   }
 
   /** Add new list item to list*/
-  static async addListItem(data) {
+  static async addListItem(list_id, data) {
     console.log("Sending:", data)
-    let res = await this.request(`items`, data, "post");
+    let res = await this.request(`lists/${list_id}/items`, data, "post");
     return res.list;
   }
   

@@ -12,18 +12,15 @@ const ListDetail = () => {
   const { id } = useParams();
 
   const [list, setList] = useState([])
-  const [listItems, setListItems] = useState([])
   const [forcast, setForcast] = useState([])
   
 
-  useEffect(function getListAndItems() {
+  useEffect(function getListDetails() {
     async function getList() {
       let list = await PackableApi.getListDetails(id)
+      // let items = await PackableApi.getItems(id)
       setList(list);
-      // if (list.list_items) {
-      //   setListItems(...listItems, list.list_items)
-      // }
-      setListItems(list.list_items)
+      // setListItems(items);
     }
     getList();
   }, [id]);
@@ -37,28 +34,28 @@ const ListDetail = () => {
     getListForcast();
   }, [id]);
 
-  /**Function to add list item to current user list */
-  async function addListItem(formData) {
-    try {
-      const newItem = await PackableApi.addListItem(formData);
-      setListItems(...listItems, newItem)
-      return { success: true };
-    } catch (err) {
-      console.error("failed to add item", err);
-      return { success: false, err };
-    }
-  };
+  // /**Function to add list item to current user list */
+  // async function addListItem(formData) {
+  //   try {
+  //     const newItem = await PackableApi.addListItem(formData);
+  //     setListItems(...listItems, newItem)
+  //     return { success: true };
+  //   } catch (err) {
+  //     console.error("failed to add item", err);
+  //     return { success: false, err };
+  //   }
+  // };
 
-  async function updateItem(item_id, formData) {
-    try {
-      const updatedItem = await PackableApi.updateListItem(item_id, formData);
-      setListItems(...listItems, updatedItem)
-      return { success: true };
-    } catch (err) {
-      console.error("failed to add item", err);
-      return { success: false, err };
-    }
-  };
+  // async function updateItem(item_id, formData) {
+  //   try {
+  //     const updatedItem = await PackableApi.updateListItem(item_id, formData);
+  //     setListItems(...listItems, updatedItem)
+  //     return { success: true };
+  //   } catch (err) {
+  //     console.error("failed to add item", err);
+  //     return { success: false, err };
+  //   }
+  // };
 
   if (!list ) return <LoadingSpinner />
 
@@ -75,7 +72,7 @@ const ListDetail = () => {
       </Row>
       
       <Row>
-          <ListItems addListItem={addListItem} list_id={list.id} updateItem={updateItem} />
+          <ListItems />
       </Row>
     </Container>
   )

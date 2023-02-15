@@ -15,7 +15,13 @@ const AddListItemForm = ({ addListItem }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    let result = await addListItem(formData)
+    let newItem = {
+      category: formData.category,
+      qty: formData.qty,
+      item: formData.item
+    }
+
+    let result = await addListItem(newItem)
     if (result.success) {
       setFormData(INITIAL_STATE)
     } else {
@@ -26,7 +32,7 @@ const AddListItemForm = ({ addListItem }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(formData => ({ ...formData, list_id: list_id, [name]: value }))
+    setFormData(newItem => ({ ...newItem, [name]: value }))
   }
 
   return (

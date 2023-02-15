@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import "./ListItems.css"
 import "../styles/style.css"
 import Item from "./Item"
+import LoadingSpinner from "../common/LoadingSpinner";
 import { Row, Col } from "reactstrap";
 
 const UpdateItems = ({ items, updateItem }) => {
@@ -29,6 +30,9 @@ const UpdateItems = ({ items, updateItem }) => {
       }
     }
   }
+
+  if (!items) return <LoadingSpinner />
+  console.log(items)
 
   return (
     <Row className="mt-10">

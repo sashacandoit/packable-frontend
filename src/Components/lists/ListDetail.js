@@ -18,9 +18,7 @@ const ListDetail = () => {
   useEffect(function getListDetails() {
     async function getList() {
       let list = await PackableApi.getListDetails(id)
-      // let items = await PackableApi.getItems(id)
       setList(list);
-      // setListItems(items);
     }
     getList();
   }, [id]);

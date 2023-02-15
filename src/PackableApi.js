@@ -102,6 +102,12 @@ class PackableApi {
   static async updateListItem(item_id, data) {
     console.log("Sending:", data)
     let res = await this.request(`items/${item_id}`, data, "patch");
+    return res.item;
+  }
+
+  /** Delete list item */
+  static async deleteListItem(list_id, item_id) {
+    let res = await this.request(`lists/${list_id}`, item_id, "delete");
     return res;
   }
 

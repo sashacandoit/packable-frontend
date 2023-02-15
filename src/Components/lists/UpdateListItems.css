@@ -7,3 +7,7 @@
 .qty-cell {
   max-width: 30px;
 }
+
+.ListItemForm-btn {
+  width: 20%;
+}

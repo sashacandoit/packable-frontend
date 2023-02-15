@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import "../styles/style.css"
 import "./AddListItemForm.css"
 import { Col, Row } from "reactstrap";
-import { useParams } from "react-router-dom";
 
 const AddListItemForm = ({ addListItem }) => {
-
-  const { list_id } = useParams();
 
   const INITIAL_STATE = { category: "", item: "", qty: 0 };
   const [formData, setFormData] = useState(INITIAL_STATE);
@@ -92,7 +89,7 @@ const AddListItemForm = ({ addListItem }) => {
           </Col>
           
           <Col lg="2" md="4" xs="12">
-            <button type="submit" className="ListItemForm-btn btn btn-primary-gradient m-10 ml-0">
+            <button type="submit" className="AddListItemForm-btn btn btn-primary-gradient m-10 ml-0">
               Add
             </button>
           </Col>

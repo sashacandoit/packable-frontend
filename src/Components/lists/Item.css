@@ -1,4 +1,8 @@
-
+.Item-delete-btn {
+  border: none;
+  padding: none;
+  background-color: transparent !important;
+}
 
 .Item-qty-cell {
   max-width: 70px;
@@ -8,3 +12,8 @@
   max-width: 70px;
 }
 
+.Item-qty-arrow {
+  border: none !important;
+  background-color: transparent !important;
+  margin: 0 10px 0 10px;
+}

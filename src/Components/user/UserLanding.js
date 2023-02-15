@@ -28,7 +28,7 @@ const UserLanding = ({ logout }) => {
   async function addList(formData) {
     try {
       const newList = await PackableApi.addList(formData);
-      setUserLists(newList)
+      setUserLists(userLists => [...userLists, newList])
       return { success: true };
     } catch (err) {
       console.error("failed to add list", err);

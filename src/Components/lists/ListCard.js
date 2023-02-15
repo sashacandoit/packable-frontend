@@ -3,16 +3,23 @@ import { Link } from "react-router-dom";
 import "./ListCard.css"
 import "../styles/style.css"
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap";
+import moment from 'moment'
+
 
 const ListCard = ({ id, searched_address, arrival_date, departure_date, deleteList }) => {
+
+  const formatDate = (date) => {
+    return moment(date).format('MMMM Do YYYY')
+  }
 
   return (
     // <Link to={`/lists/${id}`}>
       <Card className="ListCard">
         <CardBody>
         <Link to={`/lists/${id}`}>
-          <CardTitle tag="h5">
+          <CardTitle className="ListCard-title" tag="h6">
             {searched_address}
+            <i className="far fa-edit ml-10 sm"></i>
           </CardTitle>
         </Link>
           <CardSubtitle
@@ -21,7 +28,7 @@ const ListCard = ({ id, searched_address, arrival_date, departure_date, deleteLi
           >
           </CardSubtitle>
           <CardText>
-            {arrival_date}
+            {formatDate(arrival_date)}
           </CardText>
           <button className="ListCard-delete-btn btn btn-xs" onClick={() => deleteList(id)}>
             <i className="far fa-times-circle danger-hover">

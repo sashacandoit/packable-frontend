@@ -34,9 +34,9 @@ const NewListForm = ({addList}) => {
   return (
     <>
       <form className="Forcast-form mt-30" onSubmit={handleSubmit}>
-        <h5>
+        <h6>
           add a new list
-        </h5>
+        </h6>
         <Row>
           <Col lg="4" md="6" xs="12">
             <div className="form-group">
@@ -79,7 +79,7 @@ const NewListForm = ({addList}) => {
             </div>
           </Col>
           <Col lg="2" md="6" xs="12">
-            <button type="submit" className="Forcast-btn btn btn-primary pill m-10 ml-0">
+            <button type="submit" className="AddListItemForm-btn btn btn-primary m-10 ml-0">
               Go!
             </button>
           </Col>

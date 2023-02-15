@@ -1462,14 +1462,14 @@ form label {
   -o-transition: 0.2s ease-in-out;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
-  box-shadow: 4px 4px 8px #79c8d1b1, -4px -4px 8px #C3F0FAb1;
+  box-shadow: 4px 4px 8px #e2e6fc, -4px -4px 8px #fff;
 }
 
 .btn:hover,
 .btn:focus,
 button:focus {
   outline: none !important;
-  box-shadow: inset 2px 2px 5px #9ADDED, inset -3px -3px 7px #C3F0FA !important;
+  box-shadow: inset 2px 2px 5px #e2e6fc, inset -3px -3px 7px #fff !important;
 }
 
 button:hover,
@@ -1817,17 +1817,17 @@ body .btn-xs.btn-icon:hover {
 .btn-primary,
 .btn-primary:focus,
 .btn-primary.active {
-  color: #223E87 !important;
-  background-color: #9adced6c !important;
-  border-color: #9ADDED !important;
+  color: #5360de !important;
+    background-color: #f5f7fe !important;
+    border-color: #f5f7fe !important;
 }
 
 .btn-primary:hover,
 .btn-primary:active,
 .show>.btn-primary.dropdown-toggle {
-  color: #223E87 !important;
-  background-color: #c3f0faa4 !important;
-  border-color: #C3F0FA !important;
+  color: #5360de !important;
+    background-color: #f5f7fe !important;
+    border-color: #f5f7fe !important;
 }
 
 .btn-outline-primary,
@@ -3125,8 +3125,8 @@ body .btn-xs.btn-icon:hover {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  /* box-shadow: 2px 2px 4px #e2e6fc, -2px -2px 4px #fff !important; */
-  box-shadow: 4px 4px 8px #C3F0FAb1, -4px -4px 8px #79c8d1b1;
+  box-shadow: 2px 2px 4px #e2e6fc, -2px -2px 4px #fff !important;
+  /* box-shadow: 4px 4px 8px #C3F0FAb1, -4px -4px 8px #79c8d1b1; */
 }
 
 .fc-inverse {

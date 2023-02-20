@@ -60,7 +60,7 @@ const UserLanding = ({ logout }) => {
         </Card>
       </Row>
       {!userLists ? <LoadingSpinner /> :
-        <Lists userLists={userLists} deleteList={handleDelete} />}
+        <Lists userLists={userLists} handleDelete={handleDelete} />}
 
     </Container>
   )

@@ -12,6 +12,25 @@
   margin-top: 30px;
 }
 
+.Signup-btn {
+  width: 35%;
+  color: #223E87 !important;
+  background-color: #9adced6c !important;
+  border-color: #9ADDED !important;
+  box-shadow: 4px 4px 8px #79c8d1b1, -4px -4px 8px #C3F0FAb1;
+}
+
+.Signup-btn:hover {
+  color: #223E87 !important;
+  background-color: #c3f0faa4 !important;
+  border-color: #C3F0FA !important;
+  outline: none !important;
+  box-shadow: inset 2px 2px 5px #9ADDED, inset -3px -3px 7px #C3F0FA !important;
+}
+
+.Signup-input {
+  box-shadow: 4px 4px 8px #C3F0FAb1, -4px -4px 8px #79c8d1b1;
+}
 
 .Signup-title {
   font-family: 'Fredoka One', sans-serif;

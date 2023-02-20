@@ -6,7 +6,7 @@ import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap";
 import moment from 'moment'
 
 
-const ListCard = ({ id, searched_address, arrival_date, departure_date, deleteList }) => {
+const ListCard = ({ id, searched_address, arrival_date, departure_date, handleDelete }) => {
 
   const formatDate = (date) => {
     return moment(date).format('MMMM Do YYYY')
@@ -30,7 +30,7 @@ const ListCard = ({ id, searched_address, arrival_date, departure_date, deleteLi
           <CardText>
             {formatDate(arrival_date)}
           </CardText>
-          <button className="ListCard-delete-btn btn btn-xs" onClick={() => deleteList(id)}>
+        <button className="ListCard-delete-btn btn btn-xs" onClick={() => handleDelete(id)}>
             <i className="far fa-times-circle danger-hover">
             </i> delete
           </button>

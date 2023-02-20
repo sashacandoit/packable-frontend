@@ -6,6 +6,11 @@ import { Card, CardBody, CardSubtitle } from "reactstrap";
 
 const ForcastDayCard = ({ formatDate, tempmax, tempmin, datetime, icon }) => {
 
+  const formatForcast = (icon) => {
+    let forcastTitle = icon.replaceAll("-", " ")
+    return forcastTitle
+  }
+
 
   return (
     <Card className="ForcastCard card-w-rised-img-top">
@@ -21,8 +26,8 @@ const ForcastDayCard = ({ formatDate, tempmax, tempmin, datetime, icon }) => {
         >
           {formatDate(datetime)}
         </CardSubtitle>
-        <p className="comment-date">
-          {icon}
+        <p className="ForcastCard-title comment-date">
+          {formatForcast(icon)}
         </p>
         <p className="ForcastCard-temp card-title">
           Low: {tempmin}° F <br/>

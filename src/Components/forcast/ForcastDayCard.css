@@ -2,6 +2,10 @@
   max-width: 50%;
 }
 
+.ForcastCard-title {
+  text-transform: capitalize;
+}
+
 .ForcastCard-date {
   color: #667DBA !important;
   font-size: 1.325em;

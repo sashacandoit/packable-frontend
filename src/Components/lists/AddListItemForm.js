@@ -9,7 +9,6 @@ const AddListItemForm = ({ addListItem }) => {
   const [formData, setFormData] = useState(INITIAL_STATE);
   // const [formErrors, setFormErrors] = useState([]);
 
-
   async function handleSubmit(e) {
     e.preventDefault();
     let newItem = {

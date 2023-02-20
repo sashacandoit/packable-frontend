@@ -35,11 +35,13 @@ const ListItems = ({forcast}) => {
   }, [id]);
 
 
-  /**Function to add list item to current user list */
+  /**Function to add list item to current user list 
+   * makes a new array with the original items and adds an object containing the new item
+  */
+
 
   const addListItem = (newItem) => {
     setListItems(items => [...items, { ...newItem, id: uuid() }]);
-    //makes a new array with the original items and adds an object containing the new item
   };
 
   /**Function to remove list item in current user list */
@@ -47,7 +49,6 @@ const ListItems = ({forcast}) => {
     const newListItems = listItems.filter((item) => item.id !== id);
     setListItems(newListItems);
   }
-
 
   /**Functions to update list items in current user list */
   function handleUpCount(index) {

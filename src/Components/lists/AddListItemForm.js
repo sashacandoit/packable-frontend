@@ -7,7 +7,7 @@ const AddListItemForm = ({ addListItem }) => {
 
   const INITIAL_STATE = { category: "", item: "", qty: 0 };
   const [formData, setFormData] = useState(INITIAL_STATE);
-  const [formErrors, setFormErrors] = useState([]);
+  // const [formErrors, setFormErrors] = useState([]);
 
 
   async function handleSubmit(e) {

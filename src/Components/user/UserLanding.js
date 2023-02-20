@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import "./UserLanding.css"
 import "../styles/style.css"
@@ -15,6 +16,7 @@ const UserLanding = ({ logout }) => {
   const { currentUser } = useContext(UserContext)
 
   const [userLists, setUserLists] = useState([])
+  const navigate = useNavigate();
 
   useEffect(function getLists() {
     async function getLists() {
@@ -30,6 +32,7 @@ const UserLanding = ({ logout }) => {
     try {
       const newList = await PackableApi.addList(formData);
       setUserLists(userLists => [...userLists, newList])
+      navigate(`/lists/${newList.id}`)
       return { success: true };
     } catch (err) {
       console.error("failed to add list", err);

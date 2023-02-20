@@ -37,6 +37,8 @@ const UserLanding = ({ logout }) => {
     }
   };
 
+
+  /**Add new list for current user  */
   async function handleDelete(id) {
     await PackableApi.deleteList(`${id}`);
     setUserLists(

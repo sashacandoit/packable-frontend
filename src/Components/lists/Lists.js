@@ -18,7 +18,7 @@ const Lists = ({ userLists, handleDelete }) => {
             searched_address={list.searched_address}
             arrival_date={list.arrival_date}
             departure_date={list.departure_date}
-            handleDelete={() => handleDelete(list.id)}
+            handleDelete={handleDelete}
           />
         </Col>
       ))}

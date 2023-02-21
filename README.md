@@ -79,6 +79,8 @@ Once backend is updated - routes will need to include username so only lists bel
 
 Styles need to be standardized across components - currently a mix of native bootstrap, reactstrap and custom styles.
 
+Testing for frontend still needs to be done.
+
 ------
 
 #### Create React App

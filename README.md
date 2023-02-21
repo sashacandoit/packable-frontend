@@ -77,7 +77,7 @@ Once backend is updated - routes will need to include username so only lists bel
 - `/lists` => `/:username/lists`
 - `/lists/:list_id` => `/:username/lists/:list_id`
 
-
+Styles need to be standardized across components - currently a mix of native bootstrap, reactstrap and custom styles.
 
 ------
 

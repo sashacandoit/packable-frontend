@@ -12,12 +12,12 @@ import moment from 'moment'
 
 const ListDetail = () => {
   const { id } = useParams();
-
+  
   const [list, setList] = useState([])
   const [forcast, setForcast] = useState([])
   
   const formatDate = (date) => {
-    return moment(date).format('MMMM Do YYYY')
+    return moment(date).format('MMM Do YYYY')
   }
 
   useEffect(function getListDetails() {
@@ -38,8 +38,8 @@ const ListDetail = () => {
   }, [id]);
 
 
-  if (!list || !forcast ) return <LoadingSpinner />
-
+  if (!list || !forcast) return <LoadingSpinner />
+  
   return (
     <Container className="ListDetail">
       <Row>

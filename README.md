@@ -34,13 +34,13 @@ If no user token is found in local sorage or the user token cannot be authentica
 
 If a valid user token is found in local storage, a NavBar showing the option to view user info and all user lists, and logout will render.
 
-##### /lists
+##### `/lists`
 
 Once a user is logged in, they are routed to `/lists` which displays their profile information, a form to add a new list, and a section showing a summary of all of their lists. 
 
 From here, the user can select a list to view it's details, delete a list, and create a new list by submitting the form with destination, arrival date and departure date. Once the form is submitted, the server updates and the user is re-routed to the newly created list detail page.
 
-##### /lists/:id
+##### `/lists/:id`
 
 If a list is selected, the user is routed to `/lists/:list_id` which renders the List Detail page. A daily forecast based on the list destination and travel dates is generated, followed by a section of auto generated List Items, calculated based on the length of the trip and general climate conditions of the destination during the travel dates.
 
@@ -48,21 +48,34 @@ From here, the user can add new list items, edit quantities of existing list ite
 
 ------
 
-### Hooks
+### Custom Hooks
 
+#### `useLocalStorage`
 
+Checks for a matching local item on local storage by key and either removes the item from local storage if key has no asigned value (ie. no token) or sets a key and value to local storage if one isn't there. 
+
+Utilizes useEffect to update local storage if local item or it's key change in state. 
 
 ------
 
 ### Component Hierarchy
 
-
+![](component-hierarchy.jpeg)
 
 ------
 
 ### Improvements to be made
 
+Error handling on frontend needs to be set up if a list with selected id is not found. Right now the `LoadingSpinner` spins forever. Should redirect to user's landing page with all lists.
 
+`ListItems` are only stored in state right now. Still need to add functions to connect with API so items can be added, updated to and deleted from database in real time.  
+
+There is no edit option currently to update `UserProfile` or `ListDetail`. Functionality is set up in the backend, but need to implement on frontend.
+
+Once backend is updated - routes will need to include username so only lists belonging to each user can be accessed:
+
+- `/lists` => `/:username/lists`
+- `/lists/:list_id` => `/:username/lists/:list_id`
 
 
 

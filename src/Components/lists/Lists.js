@@ -5,8 +5,6 @@ import { Row, Col } from "reactstrap";
 import ListCard from "./ListCard"
 
 const Lists = ({ userLists, handleDelete }) => {
-  console.log(userLists)
-
 
   return (
     <Row className="Lists-group" >
@@ -23,7 +21,6 @@ const Lists = ({ userLists, handleDelete }) => {
         </Col>
       ))}
     </Row>
-
   )
 }
 

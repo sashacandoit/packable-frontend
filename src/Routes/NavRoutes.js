@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../Components/auth/UserContext";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
@@ -9,7 +10,9 @@ import ListDetail from "../Components/lists/ListDetail";
 import Login from "../Components/auth/LoginForm";
 import Signup from "../Components/auth/SignupForm";
 
-function NavRoutes({ login, signup, logout, addList, addListItem }) {
+function NavRoutes({ login, signup, logout }) {
+
+  const user = useContext(UserContext);
 
   return (
     <div>
@@ -30,11 +33,11 @@ function NavRoutes({ login, signup, logout, addList, addListItem }) {
 
         {/* Protected Routes */}
         <Route exact path='/lists' element={<ProtectedRoute />}>
-          <Route exact path="/lists" element={<UserLanding addList={addList} logout={logout} />}></Route>
+          <Route exact path="/lists" element={<UserLanding logout={logout} />}></Route>
         </Route>
 
         <Route exact path='/lists/:id' element={<ProtectedRoute />}>
-          <Route exact path="/lists/:id" element={<ListDetail id="id" addListItem={addListItem} />}></Route>
+          <Route exact path="/lists/:id" element={<ListDetail id="id" user={user} />}></Route>
         </Route>
 
       </Routes>

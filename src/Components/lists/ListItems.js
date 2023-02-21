@@ -16,6 +16,7 @@ const ListItems = ({forcast}) => {
   const { id } = useParams();
   const [listItems, setListItems] = useState([])
 
+  //generates sample packing list based on forcast data and length of trip
   useEffect(function getListItems() {
     function getListItems() {
       let packingList = [];
@@ -38,11 +39,10 @@ const ListItems = ({forcast}) => {
   /**Function to add list item to current user list 
    * makes a new array with the original items and adds an object containing the new item
   */
-
-
   const addListItem = (newItem) => {
     setListItems(items => [...items, { ...newItem, id: uuid() }]);
   };
+
 
   /**Function to remove list item in current user list */
   function handleRemove(id) {
@@ -50,7 +50,8 @@ const ListItems = ({forcast}) => {
     setListItems(newListItems);
   }
 
-  /**Functions to update list items in current user list */
+
+  /**Functions to update list item quantities in current list */
   function handleUpCount(index) {
     const upCountItems = listItems.map((item, idx) => {
       if (idx === index) {
@@ -73,6 +74,7 @@ const ListItems = ({forcast}) => {
     setListItems(downCountItems);
   }
 
+  //If user does not have any lists yet, return:
   const NoListItems = () => {
     return (
       <Row>
@@ -82,6 +84,7 @@ const ListItems = ({forcast}) => {
       </Row>
     )
   }
+
 
   if (!listItems) return <LoadingSpinner />
 

@@ -14,9 +14,9 @@ import Lists from "../lists/Lists"
 const UserLanding = ({ logout }) => {
 
   const { currentUser } = useContext(UserContext)
-
   const [userLists, setUserLists] = useState([])
   const navigate = useNavigate();
+
 
   useEffect(function getLists() {
     async function getLists() {
@@ -41,7 +41,7 @@ const UserLanding = ({ logout }) => {
   };
 
 
-  /**Add new list for current user  */
+  /**Delete list for current user  */
   async function handleDelete(id) {
     await PackableApi.deleteList(`${id}`);
     setUserLists(
